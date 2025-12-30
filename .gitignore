@@ -10,3 +10,5 @@ data/*
 # results
 !results/
 !results/.gitkeep
+.DS_Store
+**/.DS_Store
