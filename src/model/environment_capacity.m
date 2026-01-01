@@ -4,16 +4,18 @@
 % 公式：K = K_base + K_amplitude * sin(2 * pi * t / 12 + phi), phi = pi / 2 - 2 * pi * t_peak / 12
 % =============================================================================================== %
 
-function K = environment_capacity(t, opt)
+function K = environment_capacity(t)
 
 arguments
     t double
-    opt.K_base (1, 1) double = 2
-    opt.K_amplitude (1, 1) double = 2
 end
 
+K_base = 100;                               % 植被最低覆蓋率
+K_amplitude = 50;                           % 植被覆蓋範圍 Range
 t_peak = 6;                                 % 植被覆蓋高峰
 phi = (pi / 2) - (2 * pi * t_peak / 12);    % 換算為相位
-K = opt.K_base + opt.K_amplitude .* sin((2 * pi * t / 12) + phi);
+
+K = K_base + K_amplitude .* sin((2 * pi * t / 12) + phi);
+assert(isfinite(K), "params contain NaN/Inf");
 
 end

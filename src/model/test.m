@@ -6,23 +6,21 @@
 %   (2) 呼叫 lotka_volterra 得到模式值（下一時刻的兔子、狐狸數量）
 % =============================================================================== %
 
-function next_state = api_lveq(t, now_state, past_state, dt, opt)
+function next_state = test(t, now_state, past_state, dt, x, y, std_model)
 
 arguments
     t double
     now_state (:, 2) double
     past_state (:, 2) double
     dt (1, 1) double {mustBePositive}
-
-    opt.rabbit struct = struct()
-    opt.fox struct = struct()
-    opt.env struct = struct()
-    opt.lv struct = struct()
+    x double
+    y double
+    std_model (:, 2) double
 end
 
-alpha = rate_rabbit_birth(t, opt.rabbit);
-eta = rate_fox_birth(t, opt.fox);
-K = environment_capacity(t, opt.env);
-next_state = lotka_volterra(now_state, past_state, alpha, K, eta, dt, opt.lv);
+alpha = rate_rabbit_birth(t, x) + randn * std_model(1);
+eta = rate_fox_birth(t, y) + randn * std_model(2);
+K = environment_capacity(t);
+next_state = lotka_volterra(now_state, past_state, alpha, K, eta, dt);
 
 end

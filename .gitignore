@@ -12,3 +12,9 @@ data/*
 !results/.gitkeep
 .DS_Store
 **/.DS_Store
+
+# Matlab 自動產生
+resources/
+*.prj
+*.asv
+**/*.asv
