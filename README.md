@@ -14,7 +14,7 @@
   ├─ assimilation               資料同化
   │ └─ enkf.m                   Stochastic EnKF
   │ └─ rts.m                    RTS Smoother
-  └─ main.m                 程式切入點
+  └─ main.m                     程式切入點
 ```
 
 ### 技術說明
